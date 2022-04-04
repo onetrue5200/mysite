@@ -1,0 +1,8 @@
+li a {
+    color: red;
+}
+
+body {
+    background: white url("/static/polls/images/background.jpg") no-repeat;
+    background-size: 100% 100%;
+}
