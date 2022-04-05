@@ -1,48 +1,35 @@
 {% extends "blog/base.html" %}
 {% block content %}
+
 <style>
-    body {
-        font-family: "Roboto", sans-serif;
-        font-size: 18px;
-        background-color: #fdfdfd;
+    a:link {
+        text-decoration: none;
     }
 
-    .head_text {
-        color: white;
+    a:visited {
+        text-decoration: none;
     }
 
-    .card {
-        box-shadow: 0 16px 48px #E3E7EB;
+    a:hover {
+        text-decoration: none;
+    }
+
+    a:active {
+        text-decoration: none;
     }
 </style>
 
-<header class="masthead">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class=" col-md-8 col-md-10 mx-auto">
-                <div class="site-heading">
-                    <h3 class=" site-heading my-4 mt-3 text-white"> Welcome to my Blog </h3>
-                    <p class="text-light">
-                        build by shane.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-8 mt-3 left">
+        <div class="col-md-8 blog-main">
             {% for post in post_list %}
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h2 class="card-title">{{ post.title }}</h2>
-                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
-                    <p class="card-text">{{post.content|slice:":200" }}</p>
-                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
-                </div>
+            <div class="blog-post">
+                <a href="{% url 'post_detail' post.slug  %}">
+                    <h2 class="blog-post-title">{{ post.title }}</h2>
+                </a>
+                <p class="blog-post-meta">{{ post.created_on }} | {{ post.author}} </p>
+                <p>{{post.content|slice:":200" }}</p>
             </div>
             {% endfor %}
         </div>
